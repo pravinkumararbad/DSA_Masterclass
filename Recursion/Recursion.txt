@@ -1,0 +1,146 @@
+What is recursion?
+------------------
+A function is calling itself then it is called recursive function.
+
+Importants aspects of recursion:
+--------------------------------
+There has to be a base condition which will take care of terminating the recursive function call.
+
+E.g. Psudo Code:
+----------------
+<type> function( params ) {
+    if( base_condition ) {
+        function( params );
+    }
+}
+
+void main() {
+    int x = 3;
+    fun1( x );
+}
+
+void fun1( int n ) {
+    if( n > 0 ) {
+        print( "%d", n );
+        fun1( n-1 ); // This is a recursive call.
+    }
+}
+
+How to trace a recursive function?
+----------------------------------
+Recursive function is traced by using a tree as below.
+
+         fun1( 3 ) --> is n i.e 3 > 0 
+           /  \
+          /    \
+      print 3   fun1( 2 )  --> is n i.e 2 > 0
+                   /  \
+                  /    \
+             print 2   fun1( 1 ) --> is n i.e 1 > 0
+                         /  \
+                        /    \
+                    print 1  fun1( 0 ) --> is n > 0, the base condtion fails and terminates the operation.
+                                 |
+                                 |
+                                 X
+OP: 3,2,1
+
+Once the base condition fails the control goes back to the caller function ( fun1(1) in this example ) and the execustion is completed.
+Then the control goes back to fun1( 2 ) and so on.
+
+Let's Try one more example to cement our understanding.
+-------------------------------------------------------
+void fun2( int n ) {
+    if( n > 0 ) {
+        fun2( n-1 );
+        print( "%d", n );
+    }
+}
+
+void main() {
+    int x = 3;
+    fun2( x );
+}
+
+How this function fun2 executes, let's track:
+                                 fun2( 3 )
+                                   /  \
+                                  /    \
+                           fun2( 2 )    3
+                              /   \
+                             /     \
+                        fun2( 1 )   2
+                           /   \
+                          /     \
+                     fun2( 0 )   1
+                         |
+                         |
+                         X
+OP: 1,2,3
+
+Let's compare the both examples:
+--------------------------------
+In scenario one value of n is printed and then the recursive call is made.
+In scenario two the recursive call is made and then the printing is done.
+
+Generalizing Recursion:
+-----------------------
+1. If there are some computations are to be made before making the recursive call the computation is made at calling time. (ASC)
+2. Anything that is computed after the recursive call is performed at returning time. (DSC)
+3. Recursion is just like a loop, only with a major difference. i.e. the loop will only have ASC phase and recursion can have
+   both ASC as well as DESC phase.
+
+How recursion uses stack?
+-------------------------
+Consider this example below, that we have already seen in the example.
+
+void main() {
+    int x = 3;
+    fun1( x );
+}
+
+void fun1( int n ) {
+    if( n > 0 ) {
+        print( "%d", n );
+        fun1( n-1 ); // This is a recursive call.
+    }
+}
+
+         fun1( 3 ) --> is n i.e 3 > 0 
+           /  \
+          /    \
+      print 3   fun1( 2 )  --> is n i.e 2 > 0
+                   /  \
+                  /    \
+             print 2   fun1( 1 ) --> is n i.e 1 > 0
+                         /  \
+                        /    \
+                    print 1  fun1( 0 ) --> is n > 0, the base condtion fails and terminates the operation.
+                                 |
+                                 |
+                                 X
+OP: 3,2,1
+
+                           +-----------------+             
+                           |fun1:         n=0|
+                           |-----------------|
+                           |fun1:         n=1|
+                           |-----------------|
+                           |fun1:         n=2|
+                           |-----------------|
+                           |fun1:         n=3|
+                           |-----------------|
+                           |main:         x=3|
+                           |-----------------|
+                           |      Stack      |
+                           +-----------------+      
+
+Let's analyse how the stack is being used, if we ignore the activation record for main. We have 4 activation records for fun1.
+Size of the stack is 4, and each activation record is consuming the memory of sizeof(int: n).
+
+With this analysis we can conclude  for fun1(3), there are 4 calls which translates as below.
+For fun1(n) we have n+1 calls being made. This is polynomial of degree 1. So it is safe to say recursion has O(n) space complexity.
+
+Recursion Relation: Time complexity of Recursion.
+-------------------------------------------------
+We make an assumption that each statement takes 1 unit of time to be executed.
