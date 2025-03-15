@@ -1,0 +1,109 @@
+Types of Recursion:
+-------------------
+1. Tail Recursion
+2. Head Recursion
+3. Tree Recursion
+4. Indirect Recursion
+5. Nested Recursion
+
+
+1. Tail Recursion
+-----------------
+If a function is calling it self and the recursive call is the last statement in the function. Then that recursion is
+called as Tail Recursion.
+In this recursion there is no statement is to be performed at the return time.
+
+E.g. Tail recursion
+fun( n ) {
+    if ( n > 0 )
+    {
+        -------
+        -------
+        -------
+        fun(n);
+    }
+}
+
+IMP: This is not a tail recursion, as the recursive function is the last statement here in the function, but at return there is
+a pending operation that will be performed that is addition of the element n.
+
+fun( n ) {
+    if ( n > 0 )
+    {
+        -------
+        -------
+        -------
+        fun(n) + n;
+    }
+}
+
+Let's try to write the tail recursion using loop.
+
+void fun(int n)
+{
+    while( n > 0 )
+    {
+        printf( "%d", n );
+        n--;
+    }
+}
+
+-- With the examples above we can conclude that the tail recursions can be easily be converted in for loop.
+-- For time complexity, both tail recursion and for loop will be same. O(n)
+-- Space complexityby tail recursion would be O(n), but foor loop will create only one activation record and the space
+   complexity will be O(1) for for loop.
+
+2. Head Recursion
+-----------------
+If a function is calling it self and the recursive call is the first statement in the function. Then that recursion is
+called as Head Recursion.
+
+fun( n ) {
+    if ( n > 0 )
+    {
+        fun(n);
+        print( n );
+    }
+}
+
+Let's try convert the head recursion into a loop.
+Converting head recursion in a loop is as easy as in the case of tail recursion. We have to be innovative to achieve the same.
+
+void fun(int n)
+{
+    int  i = 0
+    while( i <= n )
+    {
+        print( i );
+        ++i;
+    }
+}
+
+3. Tree Recursion
+-----------------
+Tree recursion occurs when a function makes multiple recursive calls within each invocation.
+This creates a branching structure similar to a tree.
+
+Linear recursion means that each recursive call makes at most one recursive call to itself in each function invocation.
+This results in a single linear chain of recursive calls.
+
+We already saw head and tail recursion and those can be categorized under the linear recursion.
+
+E.g.:
+-----
+void fun( int n )
+{
+    if( n > 0 )
+    {
+        printf( n );
+        fun( n-1 );
+        fun( n-2 );
+    }
+}
+fun( 3 );
+
+OP: 3 2 1 1 2 1 1
+
+4. Indirect Recursion
+5. Nested Recursion 
+

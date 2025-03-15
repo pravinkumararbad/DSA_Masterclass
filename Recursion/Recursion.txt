@@ -1,4 +1,4 @@
-What is recursion?
+﻿What is recursion?
 ------------------
 A function is calling itself then it is called recursive function.
 
@@ -144,3 +144,143 @@ For fun1(n) we have n+1 calls being made. This is polynomial of degree 1. So it 
 Recursion Relation: Time complexity of Recursion.
 -------------------------------------------------
 We make an assumption that each statement takes 1 unit of time to be executed.
+
+void main() {
+    int x = 3;
+    fun1( x );
+}
+
+void fun1( int n ) {
+    if( n > 0 ) {
+        print( "%d", n );
+        fun1( n-1 ); // This is a recursive call.
+    }
+}
+
+1. The main() function initializes x = 3 and calls fun1(3).
+2. The function fun1(int n) is a recursive function that:
+3. Prints the value of n.
+4. Calls itself with n - 1 until n becomes 0.
+
+Step-by-Step Execution:
+For n = 3, the recursive calls happen as follows:
+fun1(3) → prints 3 → calls fun1(2)
+fun1(2) → prints 2 → calls fun1(1)
+fun1(1) → prints 1 → calls fun1(0)
+fun1(0) → Base condition met (n > 0 fails), so function exits.
+
+- For the same example we will be calculating the time complexity.
+  - Each function call prints n, which takes 1 unit of time.
+  - The function runs recursively n times before reaching n = 0.
+  - Therefore, the total time taken is n units.
+  - Since the number of function calls grows linearly with n, the complexity is O(n).
+
+Find time complexity using recurrence relation:
+-----------------------------------------------
+Total Time = Time Taken by Recursive Call + O(1) [printing statement ]
+
+      +- 1           [n = 0]
+      |
+T(n)--+
+      |
+      +- T(n-1) + 1  [n > 0]
+
+With successive substitution we can calculate:
+T(n)   = T(n-1) + 1  --  1
+T(n-1) = T(n-2) + 1  --  2
+T(n) = T(n-2) + 2    --> After replacing equation 1 by using equation 2.
+
+Similarly,
+T(n-2) = T(n-3) + 1
+T(n) = T(n-3)+3      --  3
+
+Keep doing this for K times we get
+T(n) = T(n-k)+k      --  4
+
+Assuming n-k = 0, that is n=k
+T(n) = T(n-n) + n
+T(n) = T(0) + n
+T(n) = 1+n
+
+The calcations gives us clear understanding that T(n) = O(n)
+
+Static variables in recursion:
+------------------------------
+
+int fun( int n )
+{
+    if( n > 0 )
+    {
+        return fun( n-1 ) + n;
+    }
+    return 0;
+}
+
+void main()
+{
+    int a = 5;
+    printf( "%d", fun(a) );
+}
+
+Tracing the function:
+---------------------
+
+                                    fun( 5 ) = 15
+                                      / \
+                                     /   \
+                            fun( 4 ) +  _5_ = 15
+                               /  \
+                              /    \
+                       fun( 3 ) +  _4_ = 10
+                          /  \
+                         /    \
+                  fun( 2 ) +  _3_ = 6
+                     /  \
+                    /    \
+              fun( 1 ) + _2_ = 3
+                 /  \
+                /    \
+         fun( 0 ) +  _1_ = 1
+               |
+               |
+               0
+
+This was a simple tracing and there was nothing new so far from what we already knew.
+Now let's introduce a static variable and see how can we trace the tree.
+
+int fun( int n )
+{
+    static int x = 0;
+    if( n > 0 )
+    {
+        x++;
+        return fun( n-1 ) + x;
+    }
+    return 0;
+}
+
+void main()
+{
+    int a = 5;
+    printf( "%d", fun(a) );
+}
+
+         Let's track static variable here     x=0                fun( 5 ) = 25
+                                                                    / \
+                                                                   /   \
+                      x=1                                 fun( 4 ) +  _5_ = 25
+                                                             /  \
+                                                            /    \
+                      x=2                            fun( 3 ) +  _5_ = 20
+                                                        /  \
+                                                       /    \
+                      x=3                          fun( 2 ) +  _5_ = 15
+                                                   /  \
+                                                  /    \
+                      x=4                   fun( 1 ) + _5_ = 10
+                                               /  \
+                                              /    \
+                      x=5              fun( 0 ) +  _5_ = 5
+                                             |
+                                             |
+                                             0
