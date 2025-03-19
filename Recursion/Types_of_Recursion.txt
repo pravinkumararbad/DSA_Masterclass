@@ -104,6 +104,30 @@ fun( 3 );
 
 OP: 3 2 1 1 2 1 1
 
+Tracing a function call for tree recursion:
+-------------------------------------------
+fun(3)
+ ├── print 3
+ ├── fun(2)
+ │    ├── print 2
+ │    ├── fun(1)
+ │    │    ├── print 1
+ │    │    ├── fun(0)  // does nothing
+ │    │    ├── fun(-1) // does nothing
+ │    ├── fun(0)  // does nothing
+ ├── fun(1)
+ │    ├── print 1
+ │    ├── fun(0)  // does nothing
+ │    ├── fun(-1) // does nothing
+ ├── fun(2)
+ │    ├── print 2
+ │    ├── fun(1)
+ │    │    ├── print 1
+ │    │    ├── fun(0)  // does nothing
+ │    │    ├── fun(-1) // does nothing
+ │    ├── fun(0)  // does nothing
+
+				
 4. Indirect Recursion
 5. Nested Recursion 
 
