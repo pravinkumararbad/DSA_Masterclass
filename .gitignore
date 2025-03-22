@@ -13,9 +13,8 @@
 *.tmp
 
 # Build directories
-#build/
-#out/
-#bin/
+Recursion\x64
+Recursion\Recursion
 
 # IDE/Editor files
 *.sln
