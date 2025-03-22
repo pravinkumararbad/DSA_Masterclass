@@ -13,8 +13,8 @@
 *.tmp
 
 # Build directories
-Recursion\x64
-Recursion\Recursion
+Recursion\x64\
+Recursion\Recursion\
 
 # IDE/Editor files
 *.sln
