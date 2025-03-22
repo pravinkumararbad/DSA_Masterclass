@@ -18,7 +18,7 @@
 
 # Build directories for recursion
 Recursion/x64/
-Recursion/Recursion/
+Recursion/Recursion/x64/
 Recursion/.vs/
 
 # IDE/Editor files
