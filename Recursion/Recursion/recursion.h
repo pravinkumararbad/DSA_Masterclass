@@ -6,5 +6,8 @@ void headRecursion(int n);
 int staticRecursion(int n);
 int globalRecursion(int n);
 void treeRecursion(int n);
+void indirectRecursionA(int n);
+void indirectRecursionB(int n);
+int nestedRecursion(int n);
 
 #endif

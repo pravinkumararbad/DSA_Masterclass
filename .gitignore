@@ -21,6 +21,11 @@ Recursion/x64/
 Recursion/Recursion/x64/
 Recursion/.vs/
 
+# Build directories for recursion exercise
+RecursionExercises/RecursionExercises/x64/
+RecursionExercises/RecursionExercises/RecursionExercises/x64/
+RecursionExercises/RecursionExercises/.vs/
+
 # IDE/Editor files
 *.sln
 

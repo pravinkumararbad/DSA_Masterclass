@@ -15,6 +15,12 @@ int main()
 	printf( "%d", globalRecursion( 5 ) );
 	printf("\n");
 
-	treeRecursion(4);
+	treeRecursion(3);
+	printf("\n");
+
+	// Example for indirect recursion.
+	indirectRecursionA(20);
+	
+	printf("\n%d", nestedRecursion(90));
 	return 0;
 }

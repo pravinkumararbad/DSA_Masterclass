@@ -136,7 +136,46 @@ The space complexity for tree recursion here is O(n).
 
 4. Indirect Recursion
 ---------------------
+Indirect recursion occurs when two or more functions call each other in a cyclic manner.
+Unlike direct recursion, where a function calls itself, in indirect recursion, function A() calls function B(),
+and function B() calls A(), forming a loop.
 
+E.g.:
+void funA( int a )
+{
+    if( n>0 )
+    {
+        printf(n);
+        funB(n-1);
+    }
+}
 
-5. Nested Recursion 
+void funB( int n )
+{
+    if(n>1)
+    {
+        printf(n);
+        fun(n/2);
+    }
+}
 
+5. Nested Recursion
+Nested recursion is a type of recursion where the recursive function's argument itself is a recursive function call.
+
+E.g.:
+int fun(int n)
+{
+    if(n>100)
+    {
+        return n-10;
+    }
+    else
+    {
+        return fun( fun(n+11) );
+    }
+}
+
+int main()
+{
+    fun(95);
+}

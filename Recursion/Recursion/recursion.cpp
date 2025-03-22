@@ -49,8 +49,37 @@ void treeRecursion(int n)
 {
     if (n > 0)
     {
-        printf("%d", n);
+        printf("%d ", n);
         treeRecursion(n - 1);
         treeRecursion(n - 1);
     }
+}
+
+// Example for indirect recursion, here we will create 2 functions required for circular calls.
+
+void indirectRecursionA(int n)
+{
+    if (n > 0)
+    {
+        printf("%d ", n);
+        indirectRecursionB(n - 1);
+    }
+}
+
+void indirectRecursionB(int n)
+{
+    if (n > 1)
+    {
+        printf("%d ", n);
+        indirectRecursionA(n / 2);
+    }
+}
+
+int nestedRecursion(int n)
+{
+    if (n > 100)
+    {
+        return n - 10;
+    }
+    return nestedRecursion(nestedRecursion(n + 11));
 }
