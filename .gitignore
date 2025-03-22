@@ -23,8 +23,6 @@ Recursion/.vs/
 
 # IDE/Editor files
 *.sln
-*.vcxproj
-*.xcodeproj
 
 # OS-specific files
 .DS_Store
