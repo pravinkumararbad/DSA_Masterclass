@@ -13,5 +13,8 @@ int main()
 	printf( "\n" );
 
 	printf( "%d", globalRecursion( 5 ) );
+	printf("\n");
+
+	treeRecursion(4);
 	return 0;
 }

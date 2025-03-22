@@ -1,0 +1,30 @@
+# Compiled files
+*.o
+*.obj
+*.exe
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+
+# Temporary files
+*.swp
+*.tmp
+
+# Build directories
+#build/
+#out/
+#bin/
+
+# IDE/Editor files
+*.sln
+*.vcxproj
+*.xcodeproj
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

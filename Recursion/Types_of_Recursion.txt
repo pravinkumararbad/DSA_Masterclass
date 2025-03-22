@@ -131,7 +131,9 @@ fun(3)											-> first call
  │      ├── fun(0)  // does nothing			    -> fourteenth call
  │      ├── fun(0)  // does nothing		    	-> fifteenth call
 
-				
+The time complexity for tree recursion here is O(2^n).
+The space complexity for tree recursion here is O(n).
+
 4. Indirect Recursion
 ---------------------
 
