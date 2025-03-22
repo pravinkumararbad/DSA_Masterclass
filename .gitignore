@@ -7,14 +7,18 @@
 *.so
 *.dll
 *.dylib
+*.recipe
+*.pdb
+*.idb
+*.tlog
 
 # Temporary files
 *.swp
 *.tmp
 
 # Build directories
-Recursion\x64\
-Recursion\Recursion\
+Recursion/x64/
+Recursion/Recursion/
 
 # IDE/Editor files
 *.sln
