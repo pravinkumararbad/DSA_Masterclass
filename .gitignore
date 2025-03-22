@@ -16,9 +16,10 @@
 *.swp
 *.tmp
 
-# Build directories
+# Build directories for recursion
 Recursion/x64/
 Recursion/Recursion/
+Recursion/.vs/
 
 # IDE/Editor files
 *.sln
