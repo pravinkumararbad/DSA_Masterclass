@@ -30,22 +30,6 @@ int power(int m, int n)
 	return power(m, n - 1) * m;
 }
 
-// Find result for power of m raised to n using recursion more efficiently.
-// Explaination how we did it?
-// power1(2,5)
-//	  Since 5 is odd, we use the formula :
-//      m×power1((m×m), (n−1) / 2)
-//      2×power1(2×2, (5−1) / 2)
-//      2×power1(4, 2)	-- 1
-// 
-//		Solving for eq 1 part 2,
-//		For here we can consider it as second case of even power.
-//      power1(4,2):
-//	    Since 2 is even, we use :
-//		power1(4×4, 2 / 2)
-//		power1(16, 1) -- > Since n = 1, return 16;
-//		Using equation 1 => power1(2,5)=2×16=32
-
 int power1(int m, int n)
 {
 	if (n == 1)
@@ -76,4 +60,60 @@ double solveTaylorSeries(int x, int n)
 	pow = pow * x;
 	fact = fact * n;
 	return result + (pow / fact);
+}
+
+double solveTaylorSeriesUsingHornerRule(int x, int n)
+{
+	static double result = 1;
+	if( n == 0 )
+	{
+		return result;
+	}
+	result = 1 + x * result / n;
+	return solveTaylorSeriesUsingHornerRule(x, n -1);
+}
+
+double solveTaylorSeriesUsingIteration(int x, int n)
+{
+	double result = 1;
+	for (; n > 0; --n)
+	{
+		result = 1 + x * result / n;
+	}
+	return result;
+}
+
+int fibonacciSeriesUsingRecursion(int n)
+{
+	if (n <= 1)
+	{
+		return n;
+	}
+	return fibonacciSeriesUsingRecursion(n - 2) + fibonacciSeriesUsingRecursion(n - 1);
+}
+
+int fibonacciSeriesUsingIteration(int n)
+{
+	if (n <= 1)
+	{
+		return n;
+	}
+	int t0 = 0;
+	int t1 = 1;
+	int nThTerm;
+	for (int i = 2; i <= n; ++i)
+	{
+		nThTerm = t0 + t1;
+		t0 = t1;
+		t1 = nThTerm;
+	}
+	return nThTerm;
+}
+
+int combinationFormulaUsingRecursion(int n, int r)
+{
+	int fact1 = factorial(n); // n!
+	int fact2 = factorial(r); // r!
+	int fact3 = factorial(n-r); // (n-r)!
+	return (fact1 / (fact2 * fact3));
 }

@@ -7,6 +7,10 @@ int main()
 	printf("%d\n", power(5, 5));
 	printf("%d\n", power1(5, 5));
 	printf("%lf\n", solveTaylorSeries(3, 10));
-
+	printf("%lf\n", solveTaylorSeriesUsingHornerRule(3, 10));
+	printf("%lf\n", solveTaylorSeriesUsingIteration(3, 10));
+	printf("%d\n", fibonacciSeriesUsingRecursion(18));
+	printf("%d\n", fibonacciSeriesUsingIteration(18));
+	printf("%d\n", combinationFormulaUsingRecursion(9, 4));
 	return 0;
 }
