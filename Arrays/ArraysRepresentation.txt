@@ -1,0 +1,83 @@
+Arrays:
+-------
+1. What is an Array?
+2. Declaring and Initializing an Array
+3. Accessing Array
+
+1. What is an Array?
+--------------------
+Array is a collection of similar data elements.
+Array is a contiguous memory block.
+We can access the values stored in an array using indices.
+
+e.g. int A[5];
+
+     0   1   2    3   4
+   +---+---+---+----+---+
+A  |   |   |   | 67 |   |
+   +---+---+---+----+---+
+
+-  std::cout << A[3] << std::endl; // 67
+
+2. Declaring and Initializing an Array
+--------------------------------------
+int A[5];
+
+     0   1   2   3   4
+   +---+---+---+---+---+
+A  |   |   |   |   |   |
+   +---+---+---+---+---+
+
+The array A here holds garbage values as this is not initialized with any values.
+
+initialize the values:
+- int A[5] = {2,4,6,8,9};
+
+     0   1   2   3   4
+   +---+---+---+---+---+
+   | 2 | 4 | 6 | 8 | 9 |
+   +---+---+---+---+---+
+
+- int A[5] = {2,4};
+  When we initilize the array partially, the array will try to initialize all the value and the remaining values are initialized with 0.
+
+     0   1   2   3   4
+   +---+---+---+---+---+
+   | 2 | 4 | 0 | 0 | 0 |
+   +---+---+---+---+---+
+
+- int A[5] = {0}
+
+     0   1   2   3   4
+   +---+---+---+---+---+
+   | 0 | 0 | 0 | 0 | 0 |
+   +---+---+---+---+---+
+   
+- int A[] = {1,2,3,4,5,6}
+  Here in this case the number of variables using which the array is initilized those many array elements are created.
+
+     0   1   2   3   4   5
+   +---+---+---+---+---+---+
+   | 1 | 2 | 3 | 4 | 5 | 6 |
+   +---+---+---+---+---+---+
+   
+3. Accessing Array Elements
+---------------------------
+int A[5] = {2,5,4,9,8};
+
+Using index:
+------------
+printf( "%d", A[0] );
+
+Using for loop:
+---------------
+for( int i = 0; i < 5; ++i )
+{
+    printf( "%d", A[i] );
+}
+
+Using pointer arithmatic:
+-------------------------
+printf( "%d", A[2] );
+printf( "%d", 2[A] );
+printf( "%d", *(A+2) );
