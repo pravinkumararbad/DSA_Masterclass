@@ -54,3 +54,55 @@ int fibonacciSeriesUsingIteration(int n);
 // Let's code for combination formula. (nCr)
 // nCr = n!/r!(n-r)!
 int combinationFormulaUsingRecursion(int n, int r);
+
+// Tower of Hanoi
+// 1. Only one disk may be moved at a time.
+// 2. Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
+// 3. No disk may be placed on top of a disk that is smaller than it.
+// https://en.wikipedia.org/wiki/Tower_of_Hanoi#/media/File:Tower_of_Hanoi_4.gif
+// https://ianparberry.com/TowersOfHanoi/index64.html
+
+// Single Disk
+// Initial:              Final:
+//  A     B     C         A     B     C
+// [1]                               [1]
+// 1. Move disk 1 from A to C using B
+
+// Two Disk
+// Initial:          |         Step 1       |        Step 2        |        Final
+//  A     B     C    |     A     B     C    |    A     B     C     |    A     B     C
+// [1]               |                      |                      |               [1]
+// [2]               |    [2]   [1]         |         [1]   [2]    |               [2]
+// 1. Move disk 1 from A to B using C
+// 2. Move disk 2 from A to C using B
+// 3. Mode disk 1 from B to C using A
+
+// Three Disk
+// Initial:        |      Step 1     |      Step 2     |      Step 3    |     Step 4     |      Step 5     |     Step 6     |      Step 7
+//  A     B     C  |  A     B     C  |  A     B     C  |  A     B     C | A     B     C  |  A     B     C  | A     B     C  | A     B     C
+// [1]             |                 |                 |                |                |                 |                |            [1]
+// [2]             | [2]             |                 |       [1]      |      [1]       |                 |            [2] |            [2]
+// [3]             | [3]         [1] | [3]   [2]   [1] | [3]   [2]      |      [2]   [3] | [1]   [2]   [3] |[1]         [3] |            [3]
+// 1. Move disk 1 from A to C using B
+// 2. Move disk 2 from A to B using C
+// 3. Move disk 1 from C to A using B
+// 4. Move disk 3 from A to C using B
+// 5. Move disk 1 from B to A using C
+// 6. Move disk 2 from B to C using A
+// 7. Move disk 1 from A to C using B
+
+// Algorithm:
+// Single Disk: TOH(1, A, B, C)
+// 1. Move Disk from A to C using B
+
+// Two Disk:    TOH(2, A, B, C)
+// 1. TOH (1, A, C, B)
+// 2. Move disk from A to C using B just like single disk.
+// 3. TOH (1, B, A, C)
+
+// Three Disk:  TOH(3, A, B, C)
+// Move  two disk to tower B this can be achieved with two disk move from tower A to C
+// 1. TOH(2, A, C, B)
+// 2. Move disk from A to C using B
+// 3. TOH(2, B, A, C)
+void towerOfHanoi(int disks, int t1, int t2, int t3);

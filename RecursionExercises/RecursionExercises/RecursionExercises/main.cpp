@@ -12,5 +12,6 @@ int main()
 	printf("%d\n", fibonacciSeriesUsingRecursion(18));
 	printf("%d\n", fibonacciSeriesUsingIteration(18));
 	printf("%d\n", combinationFormulaUsingRecursion(9, 4));
+	towerOfHanoi(3, 1, 2, 3);
 	return 0;
 }

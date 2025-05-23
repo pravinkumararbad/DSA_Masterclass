@@ -117,3 +117,13 @@ int combinationFormulaUsingRecursion(int n, int r)
 	int fact3 = factorial(n-r); // (n-r)!
 	return (fact1 / (fact2 * fact3));
 }
+
+void towerOfHanoi(int disks, int t1, int t2, int t3)
+{
+	if (disks > 0)
+	{
+		towerOfHanoi(disks - 1, t1, t3, t2);
+		std::cout << "Move disk from " << t1 << " to " << t3 << std::endl;
+		towerOfHanoi(disks - 1, t2, t1, t3);
+	}
+}
