@@ -35,8 +35,12 @@ Arrays/x64/
 Arrays/Arrays/x64/
 Arrays/.vs/
 
-# Build directories for recursion exercise
+# ========================================================
 
+# Build directories for Array ADT
+ArrayADT/x64/
+ArrayADT/ArrayADT/x64/
+ArrayADT/.vs/
 
 # ====================================================
 

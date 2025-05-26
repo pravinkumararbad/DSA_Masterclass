@@ -1,0 +1,45 @@
+Array ADT (Abstract Data Type)
+------------------------------
+- Abstract data type means, representation of data type and set of operations on the data.
+- Array is provided as basic data type provided by almost all the languages.
+- Representation of data is defined by compiler itself, but the operations on data are to be implemented by us and not provided
+  by compiler.
+
+Data:
+-----
+1. Array Space
+   int a[10];
+   int *a = new int[12];
+2. Size
+3. Length (number of elements)
+
+    +---+    +---+---+---+---+---+---+---+---+---+----+----+----+
+    |   | -> | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+    +---+    +---+---+---+---+---+---+---+---+---+----+----+----+
+      a        0   1   2   3   4   5   6   7   8    9   10   11
+
+Operations we will impement:
+----------------------------
+- display()
+- add/append(x)
+- insert(index, x)
+- delete(index)
+- search(x)
+  There are two search methods in an array:
+  - Linear Search
+    In linear search we search for the key element linearly one by one, starting from the index 0.
+    Best Case: O(1) | Worst Case: O(n)
+
+    Improvement in Linear Search:
+    We can move the key element being searched one index closer which would make repeatadly searched element search faster.
+    This is called as transposition.
+    We can also swap the key element with index zero, this is called as Move To Front /  Move To Head
+
+  - Binary Search
+    
+
+- get(index)
+- set(index, x)
+- max()/min()
+- reverse()
+- shift()/rotate()
