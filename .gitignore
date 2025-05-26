@@ -16,6 +16,8 @@
 *.swp
 *.tmp
 
+# ==================================================================
+
 # Build directories for recursion
 Recursion/x64/
 Recursion/Recursion/x64/
@@ -25,6 +27,20 @@ Recursion/.vs/
 RecursionExercises/RecursionExercises/x64/
 RecursionExercises/RecursionExercises/RecursionExercises/x64/
 RecursionExercises/RecursionExercises/.vs/
+
+# ========================================================
+
+# Build directories for recursion
+Arrays/x64/
+Arrays/Arrays/x64/
+Arrays/.vs/
+
+# Build directories for recursion exercise
+RecursionExercises/RecursionExercises/x64/
+RecursionExercises/RecursionExercises/RecursionExercises/x64/
+RecursionExercises/RecursionExercises/.vs/
+
+# ====================================================
 
 # IDE/Editor files
 *.sln

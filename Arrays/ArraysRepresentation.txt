@@ -81,3 +81,105 @@ Using pointer arithmatic:
 printf( "%d", A[2] );
 printf( "%d", 2[A] );
 printf( "%d", *(A+2) );
+
+Static Vs Dynamic Arrays:
+-------------------------
+Static array:
+-------------
+When the size of an array is static and fixed, the array is known as static array.
+The static arrays are created on stack, as a part of activation record.
+The size of the array is decided at the compile-time, though the memory is allocated at the runtime.
+
+Dynamic Array:
+--------------
+When the size of an array is dynamic or can be changed in runtime as per the requirement, the array is known as dynamic array.
+Dynamic arrays are created on the head.
+The size of the array is decided at the compile-time, though the memory is allocated at the runtime.
+Dynamic Array is accessed using ppointer as the memory is allocated on head.
+This is very important to release/delete the memory when not in used.
+
+NOTE:
+The size of the array in C must be a constant value and can not be initialized with a variable, and only be decided at compile time
+In C++ we can create an array of any size at runtimee, and will be created in stack only.
+VVIMP: The VLA may or may not work based on the compilers and C++ standrds being used. In MSVS VLA will produce an error.
+
+How to manipulate/change the size of a static array:
+----------------------------------------------------
+int *p = new int[5];
+int *q = new int [10];
+for( int  i =0; i < 5; ++i )
+{
+    // We can also use memcopy to copy the elements instead of using for loop.
+    q[i] = p[i];
+}
+delete []p;
+p = q;
+q = nullptr;
+
+Q: Why can the size of an array can not be grown.
+A: We have already learned that the array elements are stored in a contiguous memory, and if we increase the size, the contiguous
+   memory location may or may not be free, and may be used by some other variables.
+   This does not guarantee the contiguous memory location is free.
+
+2-D Arrays:
+-----------
+In the discussion till now we have checked the 1-D array. The most commonly used array types are 1D, 2D and 3D arrays.
+This does not mean we have a cap, we can have n-D arrays there is no limit for this.
+This is mostly commonly used to implement matrices and tabular data.
+
+There are 3 ways to declare the 2-D arrays:
+-------------------------------------------
+1. int a[3][4]
+
+       0    1    2    3
+     +----+----+----+----+
+   0 |  1 |  2 |  3 |  4 |
+     +----+----+----+----+
+   1 |  5 |  6 |  7 |  8 |
+     +----+----+----+----+
+   2 |  9 | 10 | 11 | 12 |
+     +----+----+----+----+
+  As the arrays are contiguous memory locations, this matrix is infact a linear memory locations.
+  
+  In memory representation:
+  +---+---+---+---+---+---+---+---+---+---+----+----+----+
+  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+  +---+---+---+---+---+---+---+---+---+---+----+----+----+
+
+2. int * a[3]
+   a[0] = new int[4];
+   a[1] = new int[4];
+   a[2] = new int[4];
+     
+     +---+    +----+----+----+----+ 
+   0 |   | -> |  1 |  2 |  3 |  4 |
+     |   |    +----+----+----+----+
+     +---+    +----+----+----+----+
+   1 |   | -> |  5 |  6 |  7 |  8 |
+     |   |    +----+----+----+----+
+     +---+    +----+----+----+----+
+   2 |   | -> |  9 | 10 | 11 | 12 |
+     +---+    +----+----+----+----+
+
+3. int **a;
+   a = new int*[3];
+   a[0] = new int[4];
+   a[1] = new int[4];
+   a[2] = new int[4];
+
+     +---+
+     |   |
+     +---+
+       |
+     +---+    +----+----+----+----+ 
+   0 |   | -> |  1 |  2 |  3 |  4 |
+     |   |    +----+----+----+----+
+     +---+    +----+----+----+----+
+   1 |   | -> |  5 |  6 |  7 |  8 |
+     |   |    +----+----+----+----+
+     +---+    +----+----+----+----+
+   2 |   | -> |  9 | 10 | 11 | 12 |
+     +---+    +----+----+----+----+
+
+Array representation in compilers:
+----------------------------------
