@@ -16,7 +16,14 @@ void insertArrayElementExample();
 // Delete element from an array at a given index.
 void deleteArrayElementExample();
 
-// Delete element from an array at a given index.
+// Search a key element from an array using linear search.
 void linearSearchExample();
 void linearSearchWithTranspositionExample();
 void linearSearchWithMoveToHeadExample();
+
+// Seach a key element from an array using binary search.
+void iterativeBinarySearchExample();
+void recursiveBinarySearchExample();
+
+// Example for get/set/min/max/avg
+void getSetMinMaxAvgExample();

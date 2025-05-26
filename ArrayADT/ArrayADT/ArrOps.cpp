@@ -112,3 +112,119 @@ int linearSearchWithMoveToHead(struct Array* arr, int key)
 	}
 	return -1;
 }
+
+int iterativeBinarySearch(struct Array* arr, int key)
+{
+	int lowIndx = 0;
+	int highIndx = arr->length;
+	int midIndx = 0;
+
+	while (lowIndx <= highIndx)
+	{
+		midIndx = (lowIndx + highIndx) / 2;
+		if (arr->a[midIndx] == key)
+		{
+			return midIndx;
+		}
+		else if (key < arr->a[midIndx])
+		{
+			highIndx = midIndx - 1;
+		}
+		else
+		{
+			lowIndx = midIndx + 1;
+		}
+	}
+	return -1;
+}
+
+int recursiveBinarySearch(struct Array* arr, int lowIndx, int highIndx, int key)
+{
+	int midIndx = 0;
+
+	if (lowIndx <= highIndx)
+	{
+		midIndx = (lowIndx + highIndx) / 2;
+		if (arr->a[midIndx] == key)
+		{
+			return midIndx;
+		}
+		else if( key < arr->a[midIndx])
+		{
+			return recursiveBinarySearch(arr, lowIndx, midIndx - 1, key);
+		}
+		else
+		{
+			return recursiveBinarySearch(arr, midIndx + 1, highIndx, key);
+		}
+	}
+	return -1;
+}
+
+int get(struct Array* arr, int index)
+{
+	if ( index >= 0 && index < arr->length )
+	{
+		return arr->a[index];
+	}
+	return -1;
+}
+
+void set(struct Array* arr, int index, int x)
+{
+	if (index >= 0 && index < arr->length)
+	{
+		arr->a[index] = x;
+	}
+}
+
+int max(struct Array* arr)
+{
+	int max = arr->a[0];
+	for (size_t i = 0; i < arr->length; ++i)
+	{
+		if (max < arr->a[i])
+		{
+			max = arr->a[i];
+		}
+	}
+	return max;
+}
+
+int min(struct Array* arr)
+{
+	int min = arr->a[0];
+	for (size_t i = 0; i < arr->length; ++i)
+	{
+		if (min > arr->a[i])
+		{
+			min = arr->a[i];
+		}
+	}
+	return min;
+}
+
+int sum(struct Array* arr)
+{
+	int sum = 0;
+	for (size_t i = 0; i < arr->length; ++i)
+	{
+		sum += arr->a[i];
+	}
+	return sum;
+}
+
+double avg(struct Array* arr)
+{
+	double sum = 0;
+	for (size_t i = 0; i < arr->length; ++i)
+	{
+		sum += arr->a[i];
+	}
+	return sum/arr->length;
+}
+
+double avg1(struct Array* arr)
+{
+	return (double)sum(arr) / arr->length;
+}

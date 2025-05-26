@@ -36,7 +36,12 @@ Operations we will impement:
     We can also swap the key element with index zero, this is called as Move To Front /  Move To Head
 
   - Binary Search
-    
+    For Binary search the pre-requisites is to have a array of sorted elements.
+    If we are searching for a key, we need 3 indexes, low, high and mid = low+high/2.
+    Look for the mid index value if key is higher than the mid index value check for the key in mid+1 to high index.
+    While doing this we have a new low as previous mid-1, and high is the previous high index.
+    If the key is lower than the value at mid index, then previous mid index-1 becomes high index and previuos low is low index.
+    Repeat this till we find the desired key element.
 
 - get(index)
 - set(index, x)

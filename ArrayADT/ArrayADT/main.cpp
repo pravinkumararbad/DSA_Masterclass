@@ -7,8 +7,11 @@ int main()
 	// addArrayElementExample();
 	// insertArrayElementExample();
 	// deleteArrayElementExample();
-    // linearSearchExample();
+	// linearSearchExample();
 	// linearSearchWithTranspositionExample();
-	linearSearchWithMoveToHeadExample();
+	// linearSearchWithMoveToHeadExample();
+	// iterativeBinarySearchExample();
+	// recursiveBinarySearchExample();
+	getSetMinMaxAvgExample();
 	return 0;
 }
