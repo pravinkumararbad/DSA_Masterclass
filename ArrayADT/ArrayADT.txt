@@ -48,3 +48,6 @@ Operations we will impement:
 - max()/min()
 - reverse()
 - shift()/rotate()
+
+Set operations on arrays:
+-------------------------

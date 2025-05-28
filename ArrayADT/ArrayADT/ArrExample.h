@@ -27,3 +27,30 @@ void recursiveBinarySearchExample();
 
 // Example for get/set/min/max/avg
 void getSetMinMaxAvgExample();
+
+// Example for reversing an array
+void reverseArrayExample();
+
+// Left shift operation example
+void leftShiftExample();
+
+// left rotate operation example
+void leftRotateExample();
+
+// Left shift operation example
+void rightShiftExample();
+
+// left rotate operation example
+void rightRotateExample();
+
+// Insert an element in an sorted array example
+void insertElementInSortedArrayExample();
+
+// Check if the array elements are sorted.
+void isArraySortedExample();
+
+// Segregate the positive and negative numbers in an array
+void segregatePosNegNumbersExample();
+
+// Merge arrays example
+void mergeSortedArraysExample();

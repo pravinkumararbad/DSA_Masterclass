@@ -90,3 +90,63 @@ int sum(struct Array* arr);
 // Returns the average of all the elements of array.
 double avg(struct Array* arr);
 double avg1(struct Array* arr);
+
+// Reverse a given array.
+// Reversing an array using an auxillary array
+// We will copy a given array in an auxillary array in reverse order, and copy the array elements back to original array.
+// Time complexity is O(n). Copying the n number of array elements twice.
+void reverse(struct Array* arr);
+void reverseAlt(struct Array* arr);
+
+// In this approach, we traverse the array and swap elements from both ends — starting from the first and last indices. 
+// We increment the starting index and decrement the ending index, continuing this process until all elements are swapped.
+void reverseBetterAlt(struct Array* arr);
+
+// Left shift
+// In this we are shifting all the elements to left direction.
+// +---+---+---+---+        +---+---+---+---+
+// | 1 | 2 | 3 | 4 |   ->   | 2 | 3 | 4 | 0 |
+// +---+---+---+---+        +---+---+---+---+
+void leftShift(struct Array* arr);
+
+// left rotate operation
+// In this we are shifting elements to left direction to roatate the elements in an array.
+// +---+---+---+---+        +---+---+---+---+
+// | 1 | 2 | 3 | 4 |   ->   | 2 | 3 | 4 | 1 |
+// +---+---+---+---+        +---+---+---+---+
+void leftRotate(struct Array* arr);
+
+// Left shift
+// In this we are shifting all the elements to left direction.
+// +---+---+---+---+        +---+---+---+---+
+// | 1 | 2 | 3 | 4 |   ->   | 0 | 1 | 2 | 3 |
+// +---+---+---+---+        +---+---+---+---+
+void rightShift(struct Array* arr);
+
+// left rotate operation
+// In this we are shifting elements to left direction to roatate the elements in an array.
+// +---+---+---+---+        +---+---+---+---+
+// | 1 | 2 | 3 | 4 |   ->   | 4 | 1 | 2 | 3 |
+// +---+---+---+---+        +---+---+---+---+
+void rightRotate(struct Array* arr);
+
+// Inserting an element in an sorted array.
+// Insert 5 in the array.
+// +---+---+---+---+         +---+---+---+---+---+
+// | 1 | 3 | 6 | 9 |   -->   | 1 | 3 | 5 | 6 | 9 |   
+// +---+---+---+---+       	 +---+---+---+---+---+
+void insertElementInSortedArray(struct Array* arr, int x);
+
+// Check if the array is sorted.
+bool isArraySorted(struct Array* arr);
+
+// Sagregate positive and negative numbers.
+// +----+---+----+----+---+----+----+----+    +----+----+----+----+---+----+---+----+
+// | -6 | 3 | -8 | 10 | 9 | -7 | -9 | 12 | -> | -6 | -9 | -8 | -7 | 9 | 10 | 3 | 12 |
+// +----+---+----+----+---+----+----+----+    +----+----+----+----+---+----+---+----+
+void segregatePosNegNumbers(struct Array* arr);
+
+// This is a binary array operation, here we need more than one array.
+// Other binary operations are, append, concat, compare, copy.
+// Merging can be done on sorted arrays.
+struct Array* mergeSortedArrays(struct Array* arr1, struct Array* arr2);

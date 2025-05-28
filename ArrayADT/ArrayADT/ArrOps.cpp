@@ -18,6 +18,7 @@ void display(struct Array arr)
 	{
 		printf("%d ", arr.a[i]);
 	}
+	printf("\n");
 }
 
 // Add an element in an array. We know the length which signifies the next free location to add a new element.
@@ -69,7 +70,7 @@ void Delete(struct Array *arr, int index)
 // Linear search of an element in an array.
 int linearSearch(struct Array* arr, int key)
 {
-	for (size_t i = 0; i < arr->length; ++i)
+	for (int i = 0; i < arr->length; ++i)
 	{
 		if (arr->a[i] == key)
 		{
@@ -89,7 +90,7 @@ void swap(int* x, int* y)
 
 int linearSearchWithTransposition(struct Array* arr, int key)
 {
-	for (size_t i = 0; i < arr->length; ++i)
+	for (int i = 0; i < arr->length; ++i)
 	{
 		if (arr->a[i] == key)
 		{
@@ -102,7 +103,7 @@ int linearSearchWithTransposition(struct Array* arr, int key)
 
 int linearSearchWithMoveToHead(struct Array* arr, int key)
 {
-	for (size_t i = 0; i < arr->length; ++i)
+	for (int i = 0; i < arr->length; ++i)
 	{
 		if (arr->a[i] == key)
 		{
@@ -227,4 +228,196 @@ double avg(struct Array* arr)
 double avg1(struct Array* arr)
 {
 	return (double)sum(arr) / arr->length;
+}
+
+void reverse(struct Array* arr)
+{
+	// Create a auxillary array
+	int* auxArr = (int*)malloc(arr->length * sizeof(int));
+	for (int i = arr->length - 1, j = 0; i >= 0; --i, ++j)
+	{
+		auxArr[j] = arr->a[i];
+	}
+
+	for (int i = 0; i < arr->length; ++i)
+	{
+		arr->a[i] = auxArr[i];
+	}
+}
+
+void reverseAlt(struct Array* arr)
+{
+	// Create a auxillary array
+	struct Array auxArr { {}, 20, 0 };
+	for (int i = arr->length - 1; i >= 0; --i)
+	{
+		auxArr.a[auxArr.length++] = arr->a[i];
+	}
+
+	// Copy the elements back to original array.
+	for (size_t i = 0; i < arr->length; ++i)
+	{
+		arr->a[i] = auxArr.a[i];
+	}
+}
+
+void reverseBetterAlt(struct Array* arr)
+{
+	// Start swap operation
+	for (int i = 0, j = arr->length - 1; i < j; ++i, --j)
+	{
+		swap(&arr->a[i], &arr->a[j]);
+	}
+}
+
+void leftShift(struct Array* arr)
+{
+	for (int i = 0, j = 1; i < arr->length; ++i, ++j)
+	{
+		arr->a[i] = arr->a[j];
+	}
+}
+
+void leftRotate(struct Array* arr)
+{
+	// Nothing to rotate
+	if (arr->length <= 1)
+	{
+		return;
+	}
+	int firstElement = arr->a[0];
+	for (int i = 0, j = 1; i < arr->length; ++i, ++j)
+	{
+		arr->a[i] = arr->a[j];
+	}
+	arr->a[arr->length - 1] = firstElement;
+}
+
+void rightShift(struct Array* arr)
+{
+	for (int i = arr->length - 1; i > 0; --i)
+	{
+		arr->a[i] = arr->a[i - 1];
+	}
+	arr->a[0] = 0;
+}
+
+void rightRotate(struct Array* arr)
+{
+	// Nothing to rotate
+	if (arr->length <= 1)
+	{
+		return;
+	}
+	int lastElement = arr->a[arr->length - 1];
+	for (int i = arr->length - 1; i > 0; --i)
+	{
+		arr->a[i] = arr->a[i - 1];
+	}
+	arr->a[0] = lastElement;
+}
+
+void insertElementInSortedArray(struct Array* arr, int x)
+{
+	// Check the size of an array is greater than the length so we can insert an element.
+	if (arr->size > arr->length)
+	{
+		int indx = arr->length - 1;
+		while (arr->a[indx] > x)
+		{
+			arr->a[indx + 1] = arr->a[indx];
+			--indx;
+		}
+
+		// Add the element at the sorted position and increse the the length
+		arr->a[indx + 1] = x;
+		arr->length++;
+	}
+}
+
+bool isArraySorted(struct Array* arr)
+{
+	for (int indx = 0; indx < arr->length - 1; ++indx)
+	{
+		if (arr->a[indx] > arr->a[indx + 1])
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+void segregatePosNegNumbers(struct Array* arr)
+{
+	int i = 0;
+	int j = arr->length - 1;
+	
+	// Run a look till the index i is less than j.
+	while (i < j)
+	{
+		// if the element at index i is less than 0, increment the index i as we want to keep -ve in left side.
+		while (arr->a[i] < 0)
+		{
+			++i;
+		}
+
+		// if the element at index j is greater than 0, decrement the index j as we want to keep +ve in right side.
+		while (arr->a[j] >= 0)
+		{
+			--j;
+		}
+
+		// Swap the elements only when the value of index i is less than index j. If the index i is greater it suggests,
+		// We have completed traversal through all the elements in an array.
+		if (i < j)
+		{
+			swap(&arr->a[i], &arr->a[j]);
+		}
+	}
+}
+
+// Merge and create a new sorted array
+struct Array* mergeSortedArrays(struct Array* arr1, struct Array* arr2)
+{
+	// struct Array mergedArr { {0}, 20, 10 };
+	struct Array* mergedArr = (struct Array*)malloc(sizeof(struct Array));
+	if (mergedArr == NULL)
+	{
+		return (struct Array*)malloc(sizeof(struct Array));
+	}
+	mergedArr->a[0] = 0;
+	mergedArr->size = 20;
+	mergedArr->length = arr1->length + arr2->length;
+
+	// Process merge
+	int arr1Indx = 0;
+	int arr2Indx = 0;
+	int mergeArrIndx = 0;
+	while (arr1Indx < arr1->length && arr2Indx < arr2->length)
+	{
+		if (arr1->a[arr1Indx] < arr2->a[arr2Indx])
+		{
+			mergedArr->a[mergeArrIndx++] = arr1->a[arr1Indx++];
+		}
+		else
+		{
+			mergedArr->a[mergeArrIndx++] = arr2->a[arr2Indx++];
+		}
+	}
+	
+	// Combile if-for in while
+	while (arr1Indx < arr1->length)
+	{
+		mergedArr->a[mergeArrIndx] = arr1->a[arr1Indx++];
+	}
+	
+	// Copying data using if-while combination
+	if(arr2Indx < arr2->length)
+	{
+		for ( int j = arr2Indx; j < arr2->length; ++j)
+		{
+			mergedArr->a[mergeArrIndx++] = arr2->a[j];
+		}
+	}
+	return mergedArr;
 }

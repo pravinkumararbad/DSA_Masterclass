@@ -12,6 +12,15 @@ int main()
 	// linearSearchWithMoveToHeadExample();
 	// iterativeBinarySearchExample();
 	// recursiveBinarySearchExample();
-	getSetMinMaxAvgExample();
+	// getSetMinMaxAvgExample();
+	// reverseArrayExample();
+	// leftShiftExample();
+	// leftRotateExample();
+	// rightShiftExample();
+	// rightRotateExample();
+	// insertElementInSortedArrayExample();
+	// isArraySortedExample();
+	// segregatePosNegNumbersExample();
+	mergeSortedArraysExample();
 	return 0;
 }

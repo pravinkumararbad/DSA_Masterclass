@@ -155,3 +155,104 @@ void getSetMinMaxAvgExample()
 	printf("Avg example\n");
 	printf("Calling avg1 on array [1, 2, 3, 5, 5, 6] the avg is: %lf\n\n", avg1(&arr));
 }
+
+void reverseArrayExample()
+{
+	struct Array arr = { {1,2,3,4,5}, 20, 5 };
+	
+	// Reverse an array example
+	printf("Calling an reverse on array containing {1,2,3,4,5}\n");
+	reverse(&arr);
+	display(arr);
+
+	struct Array reverseAltArr = { {1,2,3,4,5}, 20, 5 };
+	printf("\nCalling an reverse on array containing {1,2,3,4,5}\n");
+	reverseAlt(&reverseAltArr);
+	display(arr);
+
+	struct Array reverseBetterAltArr = { {1,2,3,4,5}, 20, 5 };
+	printf("\nCalling an reverse on array containing {1,2,3,4,5}\n");
+	reverseBetterAlt(&reverseBetterAltArr);
+	display(arr);
+}
+
+void leftShiftExample()
+{
+	struct Array arr { {1, 2, 3, 4, 5}, 10, 5 };
+	printf("\nCalling left shift on array containing {1,2,3,4,5}\n");
+	leftShift(&arr);
+	display(arr);
+}
+
+void leftRotateExample()
+{
+	struct Array arr { {1, 2, 3, 4, 5}, 10, 5 };
+	printf("\nCalling left rotate on array containing {1,2,3,4,5}\n");
+	leftRotate(&arr);
+	display(arr);
+}
+
+void rightShiftExample()
+{
+	struct Array arr { {1, 2, 3, 4, 5}, 10, 5 };
+	printf("\nCalling right shift on array containing {1,2,3,4,5}\n");
+	rightShift(&arr);
+	display(arr);
+}
+
+void rightRotateExample()
+{
+	struct Array arr { {1, 2, 3, 4, 5}, 10, 5 };
+	printf("\nCalling right rotate on array containing {1,2,3,4,5}\n");
+	rightRotate(&arr);
+	display(arr);
+}
+
+void insertElementInSortedArrayExample()
+{
+	struct Array arr { {4, 8, 13, 16, 35}, 10, 5 };
+	printf("\nCalling insert element in sorted array {4,8,13,16,35}\n");
+	insertElementInSortedArray(&arr, 10);
+	display(arr);
+}
+
+void isArraySortedExample()
+{
+	struct Array arr { {4, 8, 13, 16, 35}, 10, 5 };
+	printf("\nCalling is array sorted on {4,8,13,16,35}\n");
+	if (isArraySorted(&arr))
+	{
+		printf("Array is sorted.\n");
+	}
+	else
+	{
+		printf("Array is not sorted.\n");
+	}
+
+	struct Array arr1 { {4, 8, 19, 16, 35}, 10, 5 };
+	printf("\nCalling is array sorted on {4, 8, 19, 16, 35}\n");
+	if (isArraySorted(&arr1))
+	{
+		printf("Array is sorted.\n");
+	}
+	else
+	{
+		printf("Array is not sorted.\n");
+	}
+}
+
+void segregatePosNegNumbersExample()
+{
+	struct Array arr { {-6, 3, -8, 10, 9, -7, -9, 12}, 10, 8 };
+	segregatePosNegNumbers(&arr);
+	display(arr);
+}
+
+void mergeSortedArraysExample()
+{
+	struct Array arr1 { {1, 2, 3, 4, 5, 14}, 10, 6 };
+	struct Array arr2 { {6, 7, 8, 9, 10}, 10, 5 };
+	printf("\nCalling mergeSortedArrays on {1, 2, 3, 4, 5, 14} and {6, 7, 8, 9, 10}\n");
+	struct Array* mergedArr = mergeSortedArrays(&arr1, &arr2);
+	display(*mergedArr);
+}
