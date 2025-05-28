@@ -148,5 +148,8 @@ void segregatePosNegNumbers(struct Array* arr);
 
 // This is a binary array operation, here we need more than one array.
 // Other binary operations are, append, concat, compare, copy.
-// Merging can be done on sorted arrays.
+// Merging can onlz be done on sorted arrays.
+// +---+---+---+---+---+----+   +---+---+---+---+----+     +---+---+---+---+---+---+---+---+---+----+----+
+// | 1 | 2 | 3 | 4 | 5 | 14 | + | 6 | 7 | 8 | 9 | 10 |  -> | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 14 |
+// +---+---+---+---+---+----+   +---+---+---+---+----+     +---+---+---+---+---+---+---+---+---+----+----+  
 struct Array* mergeSortedArrays(struct Array* arr1, struct Array* arr2);
