@@ -256,3 +256,30 @@ void mergeSortedArraysExample()
 	struct Array* mergedArr = mergeSortedArrays(&arr1, &arr2);
 	display(*mergedArr);
 }
+
+void unionArrayExample()
+{
+	struct Array arr1 = { {2,6,10,15,25}, 10, 5 };
+	struct Array arr2 = { {3,6,7,15,20}, 10, 5 };
+	printf("\nCalling unionArray on {2,6,10,15,25} and {3,6,7,15,20}\n");
+	struct Array* unionArr = unionArray(&arr1, &arr2);
+	display(*unionArr);
+}
+
+void intersectionArrayExample()
+{
+	struct Array arr1 = { {2,6,10,15,25}, 10, 5 };
+	struct Array arr2 = { {3,6,7,15,20}, 10, 5 };
+	printf("\nCalling intersectionArray on {2,6,10,15,25} and {3,6,7,15,20}\n");
+	struct Array* intersectionArr = intersectionArray(&arr1, &arr2);
+	display(*intersectionArr);
+}
+
+void differenceArrayExample()
+{
+	struct Array arr1 = { {2,6,10,15,25}, 10, 5 };
+	struct Array arr2 = { {3,6,7,15,20}, 10, 5 };
+	printf("\nCalling differenceArrOp on {2,6,10,15,25} and {3,6,7,15,20}\n");
+	struct Array* differenceArr = differenceArrOp(&arr1, &arr2);
+	display(*differenceArr);
+}

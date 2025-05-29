@@ -153,3 +153,42 @@ void segregatePosNegNumbers(struct Array* arr);
 // | 1 | 2 | 3 | 4 | 5 | 14 | + | 6 | 7 | 8 | 9 | 10 |  -> | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 14 |
 // +---+---+---+---+---+----+   +---+---+---+---+----+     +---+---+---+---+---+---+---+---+---+----+----+  
 struct Array* mergeSortedArrays(struct Array* arr1, struct Array* arr2);
+
+// Set operations Union | Intersection | Difference | SetMembership
+// UNION:
+// 1. Non sorted array: O(n^2) as each element is searched for its existing before copying
+// +---+---+---+---+   +---+---+---+---+    +---+---+---+---+---+---+---+
+// | 1 | 2 | 3 | 4 |   | 4 | 8 | 9 | 7 | => | 1 | 2 | 3 | 4 | 8 | 9 | 7 |
+// +---+---+---+---+   +---+---+---+---+    +---+---+---+---+---+---+---+
+//
+// 2. sorted array: O(n) using merge as we discussed before.
+// +---+---+---+---+   +---+---+---+---+    +---+---+---+---+---+---+---+
+// | 1 | 2 | 3 | 4 |   | 4 | 7 | 8 | 9 | => | 1 | 2 | 3 | 4 | 7 | 8 | 9 |
+// +---+---+---+---+   +---+---+---+---+    +---+---+---+---+---+---+---+
+// 
+// INTERSECTION:
+// 1. Non sorted array: O(n^2)
+// +---+---+---+---+   +---+---+---+---+    +---+
+// | 1 | 2 | 3 | 4 |   | 4 | 9 | 8 | 7 | => | 4 |
+// +---+---+---+---+   +---+---+---+---+    +---+
+//
+// 2. sorted array: O(n) using merge as we discussed before.
+// +---+---+---+---+   +---+---+---+---+    +---+
+// | 1 | 2 | 3 | 4 |   | 4 | 7 | 8 | 9 | => | 4 |
+// +---+---+---+---+   +---+---+---+---+    +---+
+//
+// DIFFERENCE: (A-B)
+// 1. Non sorted array: O(n^2)
+// +---+---+---+---+   +---+---+---+---+    +---+---+---+
+// | 1 | 2 | 3 | 4 |   | 4 | 9 | 8 | 7 | => | 1 | 2 | 3 |
+// +---+---+---+---+   +---+---+---+---+    +---+---+---+
+//
+// 2. sorted array: O(n) using merge as we discussed before.
+// +---+---+---+---+   +---+---+---+---+    +---+---+---+
+// | 1 | 2 | 3 | 4 |   | 4 | 7 | 8 | 9 | => | 1 | 2 | 3 |
+// +---+---+---+---+   +---+---+---+---+    +---+---+---+
+struct Array* unionArray(struct Array* arr1, struct Array* arr2);
+
+struct Array* intersectionArray(struct Array* arr1, struct Array* arr2);
+
+struct Array* differenceArrOp(struct Array* arr1, struct Array* arr2);

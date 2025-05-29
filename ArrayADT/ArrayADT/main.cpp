@@ -21,6 +21,9 @@ int main()
 	// insertElementInSortedArrayExample();
 	// isArraySortedExample();
 	// segregatePosNegNumbersExample();
-	mergeSortedArraysExample();
+	// mergeSortedArraysExample();
+	// unionArrayExample();
+	// intersectionArrayExample();
+	// differenceArrayExample();
 	return 0;
 }

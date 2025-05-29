@@ -54,3 +54,12 @@ void segregatePosNegNumbersExample();
 
 // Merge arrays example
 void mergeSortedArraysExample();
+
+// Union of array example
+void unionArrayExample();
+
+// Intersection of array example
+void intersectionArrayExample();
+
+// Difference of array example
+void differenceArrayExample();

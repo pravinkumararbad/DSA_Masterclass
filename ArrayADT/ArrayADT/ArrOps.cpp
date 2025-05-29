@@ -23,7 +23,7 @@ void display(struct Array arr)
 
 // Add an element in an array. We know the length which signifies the next free location to add a new element.
 // This will take 1 unit time to add the element making the time complexity of O(1).
-void add(struct Array *arr, int x)
+void add(struct Array1 *arr, int x)
 {
 	if (arr->length < arr->size)
 	{
@@ -420,4 +420,123 @@ struct Array* mergeSortedArrays(struct Array* arr1, struct Array* arr2)
 		}
 	}
 	return mergedArr;
+}
+
+struct Array* unionArray(struct Array* arr1, struct Array* arr2)
+{
+	// struct Array mergedArr { {0}, 20, 10 };
+	struct Array* unionArray = (struct Array*)malloc(sizeof(struct Array));
+	if (unionArray == NULL)
+	{
+		return (struct Array*)malloc(sizeof(struct Array));
+	}
+	unionArray->a[0] = 0;
+	unionArray->size = 20;
+
+	// Process merge
+	int arr1Indx = 0;
+	int arr2Indx = 0;
+	int unionArrIndx = 0;
+	while (arr1Indx < arr1->length && arr2Indx < arr2->length)
+	{
+		if (arr1->a[arr1Indx] < arr2->a[arr2Indx])
+		{
+			unionArray->a[unionArrIndx++] = arr1->a[arr1Indx++];
+		}
+		else if(arr1->a[arr1Indx] > arr2->a[arr2Indx])
+		{
+			unionArray->a[unionArrIndx++] = arr2->a[arr2Indx++];
+		}
+		else
+		{
+			unionArray->a[unionArrIndx++] = arr1->a[arr1Indx++];
+			arr2Indx++;
+		}
+	}
+
+	for (; arr1Indx < arr1->length; ++arr1Indx)
+	{
+		unionArray->a[unionArrIndx++] = arr1->a[arr1Indx];
+	}
+
+	for (; arr2Indx < arr2->length; ++arr2Indx)
+	{
+		unionArray->a[unionArrIndx++] = arr2->a[arr2Indx];
+	}
+	unionArray->length = unionArrIndx;
+	return unionArray;
+}
+
+struct Array* intersectionArray(struct Array* arr1, struct Array* arr2)
+{
+	struct Array* intersectionArray = (struct Array*)malloc(sizeof(struct Array));
+	if (intersectionArray == NULL)
+	{
+		return (struct Array*)malloc(sizeof(struct Array));
+	}
+	intersectionArray->a[0] = 0;
+	intersectionArray->size = 20;
+
+	// Process merge
+	int arr1Indx = 0;
+	int arr2Indx = 0;
+	int intersectionArrIndx = 0;
+	while (arr1Indx < arr1->length && arr2Indx < arr2->length)
+	{
+		if (arr1->a[arr1Indx] < arr2->a[arr2Indx])
+		{
+			arr1Indx++;
+		}
+		else if (arr1->a[arr1Indx] > arr2->a[arr2Indx])
+		{
+			arr2Indx++;
+		}
+		else
+		{
+			intersectionArray->a[intersectionArrIndx++] = arr1->a[arr1Indx++];
+			arr2Indx++;
+		}
+	}
+
+	intersectionArray->length = intersectionArrIndx;
+	return intersectionArray;
+}
+
+struct Array* differenceArrOp(struct Array* arr1, struct Array* arr2)
+{
+	struct Array* differenceArray = (struct Array*)malloc(sizeof(struct Array));
+	if (differenceArray == NULL)
+	{
+		return (struct Array*)malloc(sizeof(struct Array));
+	}
+	differenceArray->a[0] = 0;
+	differenceArray->size = 20;
+
+	// Process merge
+	int arr1Indx = 0;
+	int arr2Indx = 0;
+	int diffArrIndx = 0;
+	while (arr1Indx < arr1->length && arr2Indx < arr2->length)
+	{
+		if (arr1->a[arr1Indx] < arr2->a[arr2Indx])
+		{
+			differenceArray->a[diffArrIndx++] = arr1->a[arr1Indx++];
+		}
+		else if (arr1->a[arr1Indx] > arr2->a[arr2Indx])
+		{
+			arr2Indx++;
+		}
+		else
+		{
+			arr1Indx++;
+			arr2Indx++;
+		}
+	}
+
+	for (; arr1Indx < arr1->length; ++arr1Indx)
+	{
+		differenceArray->a[diffArrIndx++] = arr1->a[arr1Indx];
+	}
+	differenceArray->length = diffArrIndx;
+	return differenceArray;
 }
