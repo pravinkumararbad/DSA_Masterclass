@@ -52,7 +52,7 @@ Strings/.vs/
 # ====================================================
 
 # IDE/Editor files
-*.sln
+# *.sln
 
 # OS-specific files
 .DS_Store
