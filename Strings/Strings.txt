@@ -1,0 +1,219 @@
+What we will see in this section?
+---------------------------------
+1. Character set/ASCII codes
+2. Character Array
+3. String
+4. Creating a String
+
+1. Character set/ASCII codes
+----------------------------
+For every english character there is some integer value defined we call it as ASCII.
+ASCII - American Standard Code for Information Interchange
+
+For verious other languages like Chinese, Japanese, Korean we have Unicodes.
+
+ASCII CODES:
+------------
+A - 65		a - 97      0 - 48
+B - 66      b - 98      1 - 49
+.           .           .
+.           .           .
+Z - 90      z - 122     9 - 57
+
+There are also ASCII codes available for special characters.
+ASCII codes starts from 0 - 127 total number comes up to 128.
+
+- 7 bits are  sufficient for storing an ASCII code 2^7 = 128.
+
+HELP: https://home.unicode.org/
+
+2. Character Array
+------------------
+
+char temp;
+temp = 'A';  
+temp = 'AB'; X
+temp = A;    X
+temp = "A";  X
+
+Here, temp variable do not hold a value A in the memory as the machine do not understand the meaning of char A.
+It holds a integer value which has a value of integer 65, this corresponds to the ASCII value of A.
+
+printf("%d", temp);  -> 65
+printf("%c", temp);  -> A
+
+Array of character with size 5 in below examples.
+char a[5];
+char a[5] = {'A', 'B', 'C', 'D', 'E'};
+char a[] = {'A', 'B', 'C', 'D', 'E'};
+char a[5] = {65,66,67,68,69};
+
+       0   1   2   3   4
+     +---+---+---+---+---+
+  a  | A | B | C | D | E |
+     +---+---+---+---+---+
+
+char a[5] = {65,66};
+
+       0   1   2   3   4
+     +---+---+---+---+---+
+  a  | A | B | 0 | 0 | 0 |
+     +---+---+---+---+---+
+
+3. String
+---------
+Store a name in an array:
+The example below is just a array of chartacter to make it a string we must add a string delimeter.
+char name[10] = {'J', 'o', 'h', 'n'};
+
+          0   1   2   3   4   5   6   7   8   9
+        +---+---+---+---+---+---+---+---+---+---+
+  name  | J | o | h | n | 0 | 0 | 0 | 0 | 0 | 0 |
+        +---+---+---+---+---+---+---+---+---+---+
+
+4. Creating a String
+--------------------
+char name[10] = {'J', 'o', 'h', 'n', '\0'};
+          0   1   2   3   4    5   6   7   8   9
+        +---+---+---+---+----+---+---+---+---+---+
+  name  | J | o | h | n | \0 | 0 | 0 | 0 | 0 | 0 |
+        +---+---+---+---+----+---+---+---+---+---+
+
+- To know the length of a string in a character array we either need to know the length of the string, or
+  need to find the character '\0'. This is called as string delimeter, string terminator, end of string character,
+  or null character.
+
+Methods of declaring and initializing a string:
+-----------------------------------------------
+char name [10] = {'J', 'o', 'h', 'n', '\0'};
+char name [] = {'J', 'o', 'h', 'n', '\0'};
+char name [] = "John"; // This method implicitly add the delimeter.
+
+Reading and writing a string:
+-----------------------------
+- Write a string:
+  printf("%s", name);
+
+- Read a string:
+  scanf("%s", name);
+
+NOTE: scanf is used only to read a single string
+      If we want to get the string "Why not?", the scanf can only read "Why" and skips "not?" is skipped.
+      To achieve this we have a function in place called gets()
+
+- Reading "Why not?":
+  // gets(name);
+  fgets(name, sizeof(name), stdin);
+
+NOTE: gets() function has been removed from the C Standard Library starting with C11 due to its inherent insecurity.
+      It doesn't check for buffer overflows.
+
+Usage of fgets is suggested over gets.
+
+Let's revise Bitwise operation:
+-------------------------------
+             7   6   5   4   3   2   1   0
+           +---+---+---+---+---+---+---+---+
+1 Byte ->  |   |   |   |   |   |   |   |   |
+           +---+---+---+---+---+---+---+---+
+
+           0 -> Least significant bit
+           7 -> Most significant bit
+
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+char H = 0   | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+             +---+---+---+---+---+---+---+---+
+
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+char H = 2   | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+             +---+---+---+---+---+---+---+---+
+
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+char H = 4   | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
+             +---+---+---+---+---+---+---+---+
+
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+char H = 8   | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
+             +---+---+---+---+---+---+---+---+
+
+This gives us an idea that each bit is storing values in multiples like:
+
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+char H = 8   | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
+             +---+---+---+---+---+---+---+---+
+              128  64  32  16  8   4   2   1
+
+What is shift?
+--------------
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+char H = 1   | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+             +---+---+---+---+---+---+---+---+
+             
+             When we shift the bit by 1
+             i.e. H = H << 1
+             This make the value of H = 2
+
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+char H = 2   | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+             +---+---+---+---+---+---+---+---+
+
+             When we shift the bit by 2
+             i.e. H = H << 2
+             This make the value of H = 4
+
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+char H = 4   | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 0 |
+             +---+---+---+---+---+---+---+---+
+
+What is ANDing (Masking)?
+-------------------------
+- Checking if the bit is on or off is called masking.
+
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+char a = 10  | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 0 |
+             +---+---+---+---+---+---+---+---+
+
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+char b = 6   | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 |
+             +---+---+---+---+---+---+---+---+
+
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+( a & b) = 2 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+             +---+---+---+---+---+---+---+---+
+
+             1010 & 0010 -> 0010 = 2
+
+What is ORing (Merging)?
+------------------------
+- Setting the bit on is called merging.
+
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+char a = 10  | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 0 |
+             +---+---+---+---+---+---+---+---+
+
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+char b = 6   | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 |
+             +---+---+---+---+---+---+---+---+
+
+               7   6   5   4   3   2   1   0
+             +---+---+---+---+---+---+---+---+
+( a | b) = 2 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 0 |
+             +---+---+---+---+---+---+---+---+
+
+             1010 & 0010 -> 1110 = 14
+
+- Setting the bit on is called merging.
+- Checking if the bit is on or off is called masking.
