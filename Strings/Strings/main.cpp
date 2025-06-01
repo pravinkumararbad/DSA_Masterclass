@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <stdlib.h>
 #include <string>
 
@@ -143,7 +143,7 @@ void countNumOfWordsAndVowelsInStr1()
 			lettersInStr++;
 		}
 
-		// Word detection: if we hit an alpha character and we’re not in a word yet
+		// Word detection: if we hit an alpha character and weâ€™re not in a word yet
 		if (isalpha(ch))
 		{
 			if (!inWord)
@@ -199,7 +199,7 @@ void countNumOfWordsAndVowelsInStr2()
 			lettersInStr++;
 		}
 
-		// Word detection: if we hit an alpha character and we’re not in a word yet
+		// Word detection: if we hit an alpha character and weâ€™re not in a word yet
 		if (isAlpha)
 		{
 			if (!inWord)
@@ -432,7 +432,71 @@ bool isDuplicateCharInString3()
 
 bool isAnagram()
 {
+	char a[] = "listen";
+	char b[] = "silent";
 
+	if (strlen(a) != strlen(b))
+	{
+		printf("Given strings %s, and %s are not anagrams.", a, b);
+		return false;
+	}
+	int hashArr[26] = { 0 };
+	for (int aIndx = 0; a[aIndx] != '\0'; ++aIndx)
+	{
+		hashArr[122 - (int)a[aIndx]]++;
+	}
+	for (int bIndx = 0; b[bIndx] != '\0'; ++bIndx)
+	{
+		hashArr[122 - (int)b[bIndx]]--;
+		if (hashArr[122 - (int)b[bIndx]] < 0)
+		{
+			printf("Given strings %s, and %s are not anagrams.", a, b);
+			return false;
+		}
+	}
+	printf("Given strings %s, and %s are anagrams.", a, b);
+	return true;
+}
+
+// A string permutation is a rearrangement of the characters in a string,
+// creating a new sequence while using all the original characters
+// e.g. ABC => ABC, ACB, CAB, CBA, BAC, BCA => n!
+// Solution can be achieved by State Space Tree, recursion and Backtracking.
+
+//                    [ABC]
+//          +-----------|-----------+
+//          |           |           |
+//          A           B           C
+//         / \         / \         / \
+//        B   C       A   C       A   B
+//       /     \     /     \     /     \
+//      C       B   C       A   B       A
+//     ABC    ACB  BAC     BCA CAB     CBA
+
+void permulationOfString(int k)
+{
+	char str[8] = "ABCDEFG";
+	static int a[10] = {};
+	static char res[10];
+	int i;
+	if (str[k] == '\0')
+	{
+		res[k] = 0;
+		printf("%s\n", res);
+	}
+	else
+	{
+		for (int indx = 0; str[indx] != '\0'; ++indx)
+		{
+			if (a[indx] == 0)
+			{
+				res[k] = str[indx];
+				a[indx] = 1;
+				permulationOfString(k + 1);
+				a[indx] = 0;
+			}
+		}
+	}
 }
 
 int main()
@@ -453,5 +517,7 @@ int main()
 	// isDuplicateCharInString1();
     // isDuplicateCharInString2();
 	// isDuplicateCharInString3();
+	// isAnagram();
+	permulationOfString(0);
 	return 0;
 }
