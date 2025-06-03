@@ -44,10 +44,17 @@ ArrayADT/.vs/
 
 # ====================================================
 
-# Build directories for Array ADT
+# Build directories for Strings ADT
 Strings/x64/
 Strings/Strings/x64/
 Strings/.vs/
+
+# ====================================================
+
+# Build directories for Matrices ADT
+Matrices/x64/
+Matrices/Matrices/x64/
+Matrices/.vs/
 
 # ====================================================
 
